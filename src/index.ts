@@ -1,8 +1,10 @@
+import 'module-alias/register'; // only for production env
+
+import { ADDRESS, NODE_ENV, PORT } from '@config';
+import connect from '@db';
+import logger from '@utils/logger';
 import { Server, createServer } from 'http';
 import app from './app';
-import { ADDRESS, NODE_ENV, PORT } from './config';
-import connect from './db';
-import logger from './utils/logger';
 
 let server: Server;
 
