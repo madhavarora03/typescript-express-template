@@ -15,6 +15,7 @@ const loggerFormat = winston.format.combine(
   winston.format.printf(
     ({ level, message, timestamp }) => `${timestamp} ${level}: ${message}`,
   ),
+  winston.format.errors({ stack: true }),
 );
 
 const consoleTransport = new winston.transports.Console({
