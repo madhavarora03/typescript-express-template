@@ -1,6 +1,6 @@
-import { MONGO_URI, NODE_ENV } from '@config';
-import { DB_NAME } from '@constants';
-import logger from '@utils/logger';
+import { MONGO_URI, NODE_ENV } from '@/config';
+import { DB_NAME } from '@/constants';
+import logger from '@/utils/logger';
 import mongoose from 'mongoose';
 
 const connect = async () => {
@@ -14,7 +14,7 @@ const connect = async () => {
     logger.info('====== Connected to MongoDB ======');
     logger.info(`Host: ${connectionInstance.connection.host}`);
   } catch (error) {
-    logger.error('⚠️ MONGODB connection failed !!!', error);
+    logger.error(error);
     process.exit(1);
   }
 };
