@@ -24,6 +24,9 @@ const schema = object({
   MAILER_PORT: number().default(2525),
   MAILER_USER: string({ required_error: 'MAILER_USER is required' }).min(1),
   MAILER_PASS: string({ required_error: 'MAILER_PASS is required' }).min(1),
+  FRONTEND_DOMAIN: string({
+    required_error: 'FRONTEND_DOMAIN is required',
+  }).min(1),
 });
 
 const env = schema.parse(process.env);
@@ -42,4 +45,5 @@ export const {
   MAILER_PORT,
   MAILER_USER,
   MAILER_PASS,
+  FRONTEND_DOMAIN,
 } = env;

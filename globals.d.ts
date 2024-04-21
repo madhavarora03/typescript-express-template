@@ -1,1 +1,1 @@
-type mailSubject = 'reset' | 'verify' | 'welcome';
+type emailType = 'reset' | 'verify';

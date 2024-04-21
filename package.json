@@ -49,6 +49,7 @@
     "module-alias": "^2.2.3",
     "mongoose": "^8.3.0",
     "nodemailer": "^6.9.13",
+    "uuidv4": "^6.2.13",
     "winston": "^3.12.0",
     "zod": "^3.22.4"
   }
