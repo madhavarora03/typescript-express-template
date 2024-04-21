@@ -1,3 +1,3 @@
-import { UserDocument, UserMethods, UserModel } from './user.interface';
+import { User, UserDocument, UserMethods, UserModel } from './user.interface';
 
-export { UserDocument, UserMethods, UserModel };
+export { User, UserDocument, UserMethods, UserModel };

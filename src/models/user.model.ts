@@ -4,12 +4,12 @@ import {
   REFRESH_TOKEN_EXPIRY,
   REFRESH_TOKEN_SECRET,
 } from '@/config';
-import { UserDocument, UserModel } from '@/interfaces';
+import { UserDocument, UserMethods, UserModel } from '@/interfaces';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Schema, model } from 'mongoose';
 
-const userSchema = new Schema<UserDocument, UserModel>({
+const userSchema = new Schema<UserDocument, UserModel, UserMethods>({
   name: { type: String },
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
@@ -31,9 +31,17 @@ userSchema.methods.comparePassword = async function (password: string) {
 };
 
 userSchema.methods.generateAccessToken = function () {
-  return jwt.sign({ id: this._id }, ACCESS_TOKEN_SECRET, {
-    expiresIn: ACCESS_TOKEN_EXPIRY,
-  });
+  return jwt.sign(
+    {
+      _id: this._id,
+      name: this.name,
+      email: this.email,
+    },
+    ACCESS_TOKEN_SECRET,
+    {
+      expiresIn: ACCESS_TOKEN_EXPIRY,
+    },
+  );
 };
 
 userSchema.methods.generateRefreshToken = function () {

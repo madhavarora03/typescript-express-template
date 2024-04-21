@@ -1,6 +1,6 @@
 import { Document, Model } from 'mongoose';
 
-export interface UserDocument extends Document {
+export interface User {
   name: string;
   username: string;
   email: string;
@@ -21,10 +21,12 @@ export interface UserDocument extends Document {
   updatedAt?: Date;
 }
 
+export interface UserDocument extends User, Document {}
+
 export interface UserMethods {
   comparePassword: (password: string) => Promise<boolean>;
   generateAccessToken: () => string;
   generateRefreshToken: () => string;
 }
 
-export interface UserModel extends Model<UserDocument, UserMethods> {}
+export interface UserModel extends Model<User, UserDocument, UserMethods> {}
