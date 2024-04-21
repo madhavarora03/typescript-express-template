@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { number, object, string } from 'zod';
+import { object, string } from 'zod';
 config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
 const schema = object({
@@ -21,7 +21,7 @@ const schema = object({
   MONGO_URI: string({ required_error: 'MONGO_URI is required' }).min(1),
   CORS_ORIGIN: string({ required_error: 'CORS_ORIGIN is required' }).min(1),
   MAILER_HOST: string({ required_error: 'MAILER_HOST is required' }).min(1),
-  MAILER_PORT: number().default(2525),
+  MAILER_PORT: string().default('2525'),
   MAILER_USER: string({ required_error: 'MAILER_USER is required' }).min(1),
   MAILER_PASS: string({ required_error: 'MAILER_PASS is required' }).min(1),
   FRONTEND_DOMAIN: string({

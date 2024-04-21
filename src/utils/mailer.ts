@@ -34,7 +34,7 @@ export const sendEmail = async (
 
     const transporter = nodemailer.createTransport({
       host: MAILER_HOST,
-      port: MAILER_PORT,
+      port: Number(MAILER_PORT),
       auth: {
         user: MAILER_USER,
         pass: MAILER_PASS,
